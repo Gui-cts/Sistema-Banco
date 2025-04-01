@@ -1,5 +1,5 @@
 package banco;
-//20 min aula teorica 5
+//23 min aula teorica 5
 public class ContaBanco {
     public int numConta;
     protected String tipo;
