@@ -12,24 +12,62 @@ public class ContaBanco {
         this.saldo = 0;
     }
 
-    public void openAccount(){
-        
+    public void openAccount(String t){
+        setTipo(t);
+        setStatus(true);
+        if (t == "CC"){
+            setSaldo(50);
+        } else if (t == "CP") {
+            setSaldo(150);
+        }
     }
     
     public void closeAccount(){
-        
+        if (saldo > 0){
+            System.out.println("Conta tem dinheiro");
+        } else if (saldo < 0) {
+            System.out.println("Conta em débitos");
+        } else {
+            setStatus(false);
+        }
     }
     
-    public void deposit(){
-        
+    public void deposit(float v){
+        if (isStatus()){
+            setSaldo(getSaldo() + v);
+        } else {
+            System.out.println("Impossivel depositar");
+        }
     }
     
-    public void withdraw(){
-        
+    public void withdraw(float v){
+        if (isStatus()){
+            if (getSaldo()>v){
+                setSaldo(getSaldo() - v);
+            }else{
+                System.out.println("Saldo insuficiente");
+            }
+        } else{
+            System.out.println("Impossivel sacar");
+        }
     }
     
     public void payMonthly(){
-        
+        float v;
+        if(tipo == "CC"){
+            v  = 12;
+        } else if (tipo == "CP") {
+            v = 20;
+        }
+        if (isStatus()){
+            if(getSaldo() > v){
+                setSaldo(getSaldo() - v);
+            } else {
+                System.out.println("Saldo insuficiente");
+            }
+        } else {
+            System.out.println("Impossivel pagar");
+        }
     }
     
     public int getNumConta() {
