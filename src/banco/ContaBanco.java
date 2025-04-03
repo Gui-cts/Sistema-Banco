@@ -53,11 +53,11 @@ public class ContaBanco {
     }
     
     public void payMonthly(){
-        float v;
+        float v = 0;
         if(tipo == "CC"){
-            v  = 12;
+            v  = 12f;
         } else if (tipo == "CP") {
-            v = 20;
+            v = 20f;
         }
         if (isStatus()){
             if(getSaldo() > v){
